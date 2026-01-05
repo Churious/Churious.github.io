@@ -1,78 +1,16 @@
 /* 1. 폰트 및 기본 설정 */
 :root {
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --gap: 20px;
-    --content-gap: 20px;
-    --radius: 20px;
+    --gap: 24px;
+    --content-gap: 24px;
+    --radius: 16px; /* 모서리 둥글기 */
 }
 
 body {
     font-family: var(--font-family) !important;
 }
 
-body:not(.dark) {
-    background-color: #fcfcfc;
-}
-
-/* 2. 헤더(상단 메뉴) - 화면 양옆으로 쫙 벌리기 */
-.header {
-    max-width: 1600px !important; /* 최대 폭 대폭 증가 */
-    width: 92% !important;        /* 화면의 92% 사용 */
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-.nav {
-    background: transparent;
-    width: 100%;
-}
-
-/* 3. 메인 컨테이너 - 내용물도 넓게 */
-.main {
-    max-width: 1600px !important; 
-    width: 92% !important;
-    margin: 0 auto;
-    padding: 0; /* 불필요한 여백 제거 */
-}
-
-/* 4. 글 목록(List) 카드 디자인 */
-.post-entry {
-    background: var(--entry);
-    border-radius: 20px;
-    padding: 30px; /* 내부 여백 좀 더 줌 */
-    margin-bottom: 24px;
-    border: 1px solid var(--border);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.post-entry:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* 5. 버튼 스타일 */
-.button, button, input[type="submit"], .btn-churious, .btn-primary {
-    border-radius: 50px !important;
-    padding: 10px 25px;
-    font-weight: 600;
-}
-
-/* 6. 제목 폰트 */
-h1, h2, h3, h4, .entry-title {
-    font-weight: 800 !important;
-    letter-spacing: -0.02em;
-}
-
-/* ★중요★ 글 읽는 페이지(Article)는 너무 넓으면 눈 아프니까 가운데 정렬 유지 */
-.post-single .post-content, .post-single .post-header, .post-single .post-footer {
-    max-width: 900px; /* 글 읽기는 적당히 */
-    margin: 0 auto;
-}
-/* =========================================
-   추가: 부드러운 전환 & 다크모드 로고 반전
-   ========================================= */
-
-/* 1. 부드러운 색상 전환 (모든 주요 요소에 적용) */
+/* 2. ★핵심★ 부드러운 화면 전환 애니메이션 */
 body, 
 .header, 
 .footer, 
@@ -80,18 +18,48 @@ body,
 .value-card, 
 .btn-primary, 
 .btn-secondary,
-h1, h2, h3, h4, p, span, a {
-    /* 0.4초 동안 부드럽게 변함 */
+h1, h2, h3, h4, p, span, a, 
+.entry-content,
+.page-header,
+div {
+    /* 배경색, 글자색, 테두리색이 0.4초 동안 부드럽게 변함 */
     transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 border-color 0.4s ease, 
-                filter 0.4s ease !important;
+                filter 0.4s ease,
+                transform 0.3s ease !important;
 }
 
-/* 2. 다크모드 시 로고 색상 반전 (검정 -> 흰색) */
-/* 메인 화면 로고 + 상단 메뉴 로고 모두 적용 */
-body.dark .hero-logo,
-body.dark .logo img {
-    /* 밝기를 0으로 낮추고(검정), 색상을 반전시킴(흰색) */
+/* 3. 헤더 & 전체 레이아웃 (와이드 모드) */
+.header {
+    max-width: 1400px !important;
+    width: 92% !important;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.main {
+    max-width: 1400px !important;
+    width: 92% !important;
+    margin: 0 auto;
+}
+
+/* 4. 글 목록 카드 디자인 */
+.post-entry {
+    background: var(--entry);
+    border-radius: var(--radius);
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+}
+
+.post-entry:hover {
+    transform: translateY(-5px); /* 살짝 떠오름 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border-color: var(--primary);
+}
+
+/* 5. 다크모드 시 로고 색상 반전 (검정 -> 흰색) */
+body.dark .hero-logo {
     filter: brightness(0) invert(1) !important;
 }
