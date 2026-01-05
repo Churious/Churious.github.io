@@ -69,3 +69,11 @@ body.dark .logo img {
 .value-card:hover {
     transform: translateY(-10px);
 }
+body.dark img, 
+[data-theme="dark"] img {
+    /* 로고 클래스가 뭐든 간에 svg가 포함된 이미지 파일은 무조건 반전 */
+    &[src*=".svg"], &[class*="logo"] {
+        filter: brightness(0) invert(1) !important;
+        transition: filter 0.3s ease !important;
+    }
+}
