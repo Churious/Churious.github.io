@@ -1,0 +1,163 @@
+{{ define "main" }}
+<div class="home-content">
+    
+    <section class="hero-section">
+        <div class="hero-container">
+            <img src="/images/logo.svg" alt="Churious Logo" class="hero-logo">
+            <h1 class="hero-title">Crafting with Curiosity</h1>
+            <p class="hero-subtitle">
+                호기심으로 시작해 쓸모있는 도구를 만듭니다.<br>
+                단순함의 미학을 추구하는 1인 소프트웨어 랩.
+            </p>
+            <div class="hero-buttons">
+                <a href="/projects/" class="btn-primary">프로젝트 구경하기</a>
+                <a href="/about/" class="btn-secondary">소개 더보기</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="value-card">
+            <div class="icon">🎨</div>
+            <h3>Minimal Design</h3>
+            <p>복잡함은 걷어내고<br>본질에 집중합니다.</p>
+        </div>
+        <div class="value-card">
+            <div class="icon">⚡</div>
+            <h3>High Performance</h3>
+            <p>가볍고 빠릅니다.<br>사용자의 시간을 아껴줍니다.</p>
+        </div>
+        <div class="value-card">
+            <div class="icon">🔧</div>
+            <h3>Problem Solving</h3>
+            <p>실생활의 작은 불편함들을<br>기술로 해결합니다.</p>
+        </div>
+    </section>
+</div>
+
+<style>
+    /* 1. 홈 컨테이너를 부모(main) 크기에 맞춰 꽉 채움 */
+    .home-content {
+        width: 100%; 
+        margin: 0;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .hero-section {
+        padding: 100px 0 80px;
+    }
+    
+    .hero-logo {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
+    }
+    
+    .hero-logo:hover {
+        transform: scale(1.05) rotate(-3deg);
+    }
+
+    .hero-title {
+        font-size: 4rem; /* 제목 더 크게 */
+        font-weight: 900;
+        margin-bottom: 25px;
+        color: var(--primary);
+        letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        margin-bottom: 50px;
+        color: var(--secondary);
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 15px 40px; /* 버튼 더 큼직하게 */
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: var(--primary);
+        color: var(--theme);
+        border: 2px solid var(--primary);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+    }
+
+    .btn-primary:hover, .btn-secondary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* 2. 카드 섹션 - 화면 꽉 채워서 균등 분할 */
+    .values-section {
+        display: flex;
+        justify-content: space-between; /* 카드 사이 간격을 최대한 벌림 */
+        gap: 30px;
+        width: 100%;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .value-card {
+        flex: 1; /* 공간을 공평하게 나눠가짐 */
+        background: var(--entry);
+        padding: 50px 30px; /* 내부 여백 넉넉하게 */
+        border-radius: 25px;
+        border: 1px solid var(--border);
+        transition: transform 0.3s ease;
+        text-align: left; /* 카드 내용은 왼쪽 정렬이 더 깔끔할 수 있음 (선택사항) */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 아이콘 중앙 정렬 */
+        text-align: center;
+    }
+
+    .value-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+    }
+
+    .value-card .icon {
+        font-size: 3rem;
+        margin-bottom: 25px;
+    }
+
+    .value-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--primary);
+    }
+
+    .value-card p {
+        font-size: 1.05rem;
+        color: var(--secondary);
+        line-height: 1.6;
+    }
+
+    /* 모바일에서는 세로로 배치 */
+    @media (max-width: 900px) {
+        .hero-title { font-size: 2.5rem; }
+        .values-section { flex-direction: column; }
+    }
+</style>
+{{ end }}

@@ -1,0 +1,43 @@
+baseURL = "https://churious.github.io"
+title = "Churious"
+languageCode = "ko-kr"
+theme = ["github.com/adityatelange/hugo-PaperMod"]
+
+[params]
+  defaultTheme = "auto"
+  # 로고 설정
+  label = { text = "Churious", icon = "/images/logo.svg", iconHeight = 35 }
+  
+  # 블로그 글 관련 설정
+  ShowReadingTime = true
+  ShowShareButtons = false
+  
+  # 사이트 설명
+  description = "Crafting with Curiosity"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  # 2. 시리즈 기능 활성화 (이 줄을 꼭 추가해야 합니다!)
+  series = "series"
+
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
+[menu]
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 10
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 30

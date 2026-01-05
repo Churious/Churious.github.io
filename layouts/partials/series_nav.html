@@ -1,0 +1,172 @@
+{{ if .Params.series }}
+<div class="series-nav-container">
+    {{ $name := index .Params.series 0 }}
+    {{ $url := printf "series/%s" ($name | urlize) }}
+    
+    <div class="series-header">
+        <span class="series-label">SERIES</span>
+        <a href="/{{ $url }}" class="series-title">{{ $name }}</a>
+    </div>
+
+    <div class="series-controls">
+        {{ $series := index .Site.Taxonomies.series ($name | urlize) }}
+        {{ $pages := $series.Pages.Reverse }} 
+        
+        {{ $current := . }}
+        {{ $prev := "" }}
+        {{ $next := "" }}
+        
+        {{ range $index, $page := $pages }}
+            {{ if eq $page $current }}
+                {{ if ge (sub $index 1) 0 }}
+                    {{ $prev = index $pages (sub $index 1) }}
+                {{ end }}
+                {{ if lt (add $index 1) (len $pages) }}
+                    {{ $next = index $pages (add $index 1) }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+
+        {{ if $prev }}
+        <a href="{{ $prev.Permalink }}" class="series-btn prev">
+            <span class="arrow">←</span> 이전 편
+            <span class="tooltip">{{ $prev.Title }}</span>
+        </a>
+        {{ else }}
+        <span class="series-btn disabled">
+            <span class="arrow">⇤</span> 처음입니다
+        </span>
+        {{ end }}
+
+        <a href="/{{ $url }}" class="series-btn list">
+            <span class="icon">📑</span> 목록
+        </a>
+
+        {{ if $next }}
+        <a href="{{ $next.Permalink }}" class="series-btn next">
+            다음 편 <span class="arrow">→</span>
+            <span class="tooltip">{{ $next.Title }}</span>
+        </a>
+        {{ else }}
+        <span class="series-btn disabled">
+            마지막입니다 <span class="arrow">⇥</span>
+        </span>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+    .series-nav-container {
+        background-color: var(--entry);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        margin: 40px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+    
+    .series-header {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 15px;
+    }
+    
+    .series-label {
+        font-size: 0.75rem;
+        font-weight: 800;
+        background: var(--primary);
+        color: var(--theme);
+        padding: 2px 8px;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+    }
+    
+    .series-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--primary);
+        text-decoration: none;
+    }
+    
+    .series-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* 버튼 공통 스타일 */
+    .series-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary);
+        background: var(--tertiary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        border: 1px solid transparent; /* 테두리 공간 확보 */
+    }
+    
+    /* 활성화된 버튼 호버 효과 */
+    .series-btn:not(.disabled):hover {
+        background: var(--primary);
+        color: var(--theme);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 비활성화 버튼 스타일 (처음/마지막) */
+    .series-btn.disabled {
+        opacity: 0.4;        /* 흐리게 */
+        cursor: not-allowed; /* 금지 커서 */
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--secondary);
+    }
+
+    /* 툴팁 (마우스 올리면 제목 보여주기) */
+    .tooltip {
+        visibility: hidden;
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #222;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        transition: all 0.2s;
+        pointer-events: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+
+    /* 말풍선 꼬리 */
+    .tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #222 transparent transparent transparent;
+    }
+
+    .series-btn:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+        bottom: 135%; /* 살짝 위로 올라오는 애니메이션 */
+    }
+</style>
+{{ end }}
