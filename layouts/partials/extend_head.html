@@ -5,29 +5,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    /* 다른 애니메이션 다 끄고 오직 '투명도'만 조절 */
-    @view-transition {
-        navigation: auto;
-    }
-    
-    /* 나가는 화면: 서서히 사라짐 */
-    ::view-transition-old(root) {
-        animation: 0.2s ease-out both fade-out;
-    }
-    
-    /* 들어오는 화면: 서서히 나타남 */
-    ::view-transition-new(root) {
-        animation: 0.2s ease-in both fade-in;
+    /* [중요] 브라우저의 기본 움직임 제거 
+       ::view-transition-group은 이미지의 위치/크기를 담당하는데, 
+       이걸 고정시켜야 위아래로 안 움직입니다.
+    */
+    ::view-transition-group(root) {
+        animation-duration: 0.2s;
     }
 
-    /* 심플한 페이드 효과 정의 */
-    @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    /* 나가는 화면 (Old) */
+    ::view-transition-old(root) {
+        animation: 0.2s ease-out both fade-out;
+        mix-blend-mode: normal; /* 겹쳐 보이지 않게 */
+        transform-origin: center;
     }
-    
+
+    /* 들어오는 화면 (New) */
+    ::view-transition-new(root) {
+        animation: 0.2s ease-in both fade-in;
+        mix-blend-mode: normal;
+        transform-origin: center;
+    }
+
+    /* [핵심] 여기서 transform(위치 이동)을 아예 뺐습니다.
+       오직 opacity(투명도)만 건드립니다.
+    */
+    @keyframes fade-in {
+        0% { opacity: 0; transform: none; }
+        100% { opacity: 1; transform: none; }
+    }
+
     @keyframes fade-out {
-        from { opacity: 1; }
-        to { opacity: 0; }
+        0% { opacity: 1; transform: none; }
+        100% { opacity: 0; transform: none; }
     }
 </style>
