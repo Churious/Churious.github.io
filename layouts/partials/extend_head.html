@@ -16,12 +16,26 @@
        2. 다크모드 시 로고 흰색으로 반전 (강제 적용)
        ========================================= */
     /* body나 html에 'dark' 클래스가 붙으면 작동 */
-    body.dark img.hero-logo, 
-    .dark img.hero-logo,
     body.dark .logo img,
-    .dark .logo img {
-        filter: invert(1) brightness(100%) !important;
+    body.dark .hero-logo,
+    body.dark img[src$=".svg"] {
+        filter: brightness(0) invert(1) !important; 
         transition: filter 0.3s ease !important;
+    }
+
+    /* 2. 코드로 직접 박은(<svg>) SVG인 경우 (혹시 몰라 추가) */
+    body.dark .logo svg,
+    body.dark .hero-logo svg,
+    body.dark svg.hero-logo {
+        fill: #ffffff !important;
+        transition: fill 0.3s ease !important;
+    }
+    
+    /* (참고) path에도 강제 적용 */
+    body.dark .logo svg path,
+    body.dark .hero-logo svg path {
+        fill: #ffffff !important;
+        transition: fill 0.3s ease !important;
     }
 
     /* =========================================
