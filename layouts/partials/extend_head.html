@@ -5,29 +5,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    /* 페이지 전환 애니메이션 설정 */
+    /* =========================================
+       1. 다크모드 전환 애니메이션 (배경/글자색)
+       ========================================= */
+    body, div, section, article, header, footer, a, h1, h2, h3, h4, p, span, .post-entry, .entry-content {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    /* =========================================
+       2. 다크모드 시 로고 흰색으로 반전 (강제 적용)
+       ========================================= */
+    /* body나 html에 'dark' 클래스가 붙으면 작동 */
+    body.dark img.hero-logo, 
+    .dark img.hero-logo,
+    body.dark .logo img,
+    .dark .logo img {
+        filter: invert(1) brightness(100%) !important;
+        transition: filter 0.3s ease !important;
+    }
+
+    /* =========================================
+       3. 탭 이동 / 화면 전환 효과 (페이드)
+       ========================================= */
     @view-transition {
         navigation: auto;
     }
 
-    /* 이미지나 레이아웃이 제멋대로 움직이지 않게 고정 */
+    /* 위아래 흔들림 방지 */
     ::view-transition-group(root) {
         animation-duration: 0.3s;
     }
 
-    /* 나가는 페이지: 제자리에서 투명해짐 */
+    /* 사라지는 화면 */
     ::view-transition-old(root) {
         animation: 0.3s ease-out both fade-out;
         mix-blend-mode: normal;
     }
 
-    /* 들어오는 페이지: 제자리에서 나타남 */
+    /* 나타나는 화면 */
     ::view-transition-new(root) {
         animation: 0.3s ease-in both fade-in;
         mix-blend-mode: normal;
     }
 
-    /* 오직 투명도(Opacity)만 조절 (위아래 이동 없음) */
     @keyframes fade-in {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -36,5 +56,14 @@
     @keyframes fade-out {
         from { opacity: 1; }
         to { opacity: 0; }
+    }
+
+    /* =========================================
+       4. 카드 호버 효과 (보너스)
+       ========================================= */
+    .post-entry:hover, .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
     }
 </style>
