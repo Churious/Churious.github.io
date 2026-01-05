@@ -1,83 +1,61 @@
 <meta name="view-transition" content="same-origin">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    /* =========================================
-       1. 다크모드 전환 애니메이션 (배경/글자색)
-       ========================================= */
-    body, div, section, article, header, footer, a, h1, h2, h3, h4, p, span, .post-entry, .entry-content {
+    /* 화면 전환 애니메이션 */
+    @view-transition { navigation: auto; }
+    ::view-transition-group(root) { animation-duration: 0.3s; }
+    ::view-transition-old(root) { animation: 0.3s ease-out both fade-out; mix-blend-mode: normal; }
+    ::view-transition-new(root) { animation: 0.3s ease-in both fade-in; mix-blend-mode: normal; }
+    
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+    /* 다크모드 배경 전환 부드럽게 */
+    body, div, section, article, header, footer, a, h1, h2, h3, h4, p, span, .post-entry {
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
     }
-
-    /* =========================================
-       2. 다크모드 시 로고 흰색으로 반전 (강제 적용)
-       ========================================= */
-    /* body나 html에 'dark' 클래스가 붙으면 작동 */
-    body.dark .logo img,
-    body.dark .hero-logo,
-    body.dark img[src$=".svg"] {
-        filter: brightness(0) invert(1) !important; 
-        transition: filter 0.3s ease !important;
-    }
-
-    /* 2. 코드로 직접 박은(<svg>) SVG인 경우 (혹시 몰라 추가) */
-    body.dark .logo svg,
-    body.dark .hero-logo svg,
-    body.dark svg.hero-logo {
-        fill: #ffffff !important;
-        transition: fill 0.3s ease !important;
-    }
-    
-    /* (참고) path에도 강제 적용 */
-    body.dark .logo svg path,
-    body.dark .hero-logo svg path {
-        fill: #ffffff !important;
-        transition: fill 0.3s ease !important;
-    }
-
-    /* =========================================
-       3. 탭 이동 / 화면 전환 효과 (페이드)
-       ========================================= */
-    @view-transition {
-        navigation: auto;
-    }
-
-    /* 위아래 흔들림 방지 */
-    ::view-transition-group(root) {
-        animation-duration: 0.3s;
-    }
-
-    /* 사라지는 화면 */
-    ::view-transition-old(root) {
-        animation: 0.3s ease-out both fade-out;
-        mix-blend-mode: normal;
-    }
-
-    /* 나타나는 화면 */
-    ::view-transition-new(root) {
-        animation: 0.3s ease-in both fade-in;
-        mix-blend-mode: normal;
-    }
-
-    @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    @keyframes fade-out {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-
-    /* =========================================
-       4. 카드 호버 효과 (보너스)
-       ========================================= */
-    .post-entry:hover, .value-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
-    }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 로고를 찾아서 강제로 색상을 바꾸는 함수
+        function forceLogoWhiteInDarkMode() {
+            // 1. 현재 다크모드인지 확인 (body에 class='dark'가 있거나, localStorage가 dark일 때)
+            const isDark = document.body.classList.contains('dark') || 
+                           localStorage.getItem('pref-theme') === 'dark';
+
+            // 2. 로고 이미지들 싹 다 잡기 (SVG, PNG, 클래스 상관없이)
+            const logos = document.querySelectorAll('.logo img, .hero-logo, img[src$=".svg"]');
+
+            logos.forEach(img => {
+                if (isDark) {
+                    // 다크모드면: 검정으로 만들고 -> 반전시켜서 흰색 만들기
+                    img.style.filter = "brightness(0) invert(1)";
+                    img.style.transition = "filter 0.3s ease";
+                } else {
+                    // 라이트모드면: 필터 해제
+                    img.style.filter = "none";
+                    img.style.transition = "filter 0.3s ease";
+                }
+            });
+        }
+
+        // A. 사이트 켜자마자 실행
+        forceLogoWhiteInDarkMode();
+
+        // B. 다크모드 버튼 누를 때마다 감지해서 실행 (MutationObserver)
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                    forceLogoWhiteInDarkMode();
+                }
+            });
+        });
+        
+        // body 태그의 클래스가 바뀌는지 감시 시작
+        observer.observe(document.body, { attributes: true });
+    });
+</script>
