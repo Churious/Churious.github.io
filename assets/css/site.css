@@ -81,6 +81,9 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .project-heading { max-width: 1000px; padding-block: 64px; }
 .project-heading h1 { font-size: clamp(40px, 6vw, 80px); margin-block: 20px; line-height: 1.25; }
 .project-heading > p:last-child { font-size: 20px; color: var(--muted); }
+.project-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.project-badges span, .project-badges strong { border: 1px solid var(--line); padding: 8px 12px; font-size: 13px; font-weight: 500; }
+.project-badges strong { border-color: var(--fg); }
 .project-body { display: grid; grid-template-columns: 1fr 2.5fr; gap: 64px; border-top: 1px solid var(--line); padding-block: 44px 64px; }
 .project-body aside ul { list-style: none; padding: 0; color: var(--muted); font-size: 14px; }
 .project-body article { max-width: 720px; }
