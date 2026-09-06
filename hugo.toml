@@ -1,7 +1,6 @@
 baseURL = "https://churious.github.io/"
 title = "Churious"
 languageCode = "ko-kr"
-theme = ["PaperMod"]
 
 [params]
   defaultTheme = "auto"
@@ -20,21 +19,3 @@ theme = ["PaperMod"]
   tag = "tags"
   series = "series"
 
-[menu]
-  [[menu.main]]
-    identifier = "projects"
-    name = "Projects"
-    url = "/projects/"
-    weight = 10
-  
-  [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/posts/"
-    weight = 20
-  
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 30

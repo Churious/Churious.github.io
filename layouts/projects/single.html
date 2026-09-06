@@ -1,0 +1,1 @@
+{{ define "main" }}<main class="project-page"><a class="back-link" href="/projects/">← All projects</a><p class="eyebrow">{{ delimit .Params.tags " · " }}</p><h1>{{ .Title }}</h1><p class="project-description">{{ .Description }}</p><article>{{ .Content }}</article></main>{{ end }}

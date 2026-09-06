@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}Churious — Independent software studio{{ else }}{{ .Title }} — Churious{{ end }}</title>
+  <meta name="description" content="Churious — 작은 불편함을 오래 쓰고 싶은 도구로 만드는 1인 소프트웨어 스튜디오">
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/"><span class="brand-mark"><img src="/images/logo.svg" alt=""></span><span>Churious</span></a><nav><a href="/projects/">Projects</a><button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button></nav></header>
+  {{ block "main" . }}{{ end }}
+  <footer class="site-footer"><span>© {{ now.Year }} CHURIOUS</span><span>Made with curiosity.</span></footer>
+  <script>const b=document.body,t=document.querySelector('.theme-toggle');const saved=localStorage.getItem('churious-theme');if(saved==='dark')b.classList.add('dark');t.addEventListener('click',()=>{b.classList.toggle('dark');localStorage.setItem('churious-theme',b.classList.contains('dark')?'dark':'light')});</script>
+</body>
+</html>
