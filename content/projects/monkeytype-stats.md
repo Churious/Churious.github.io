@@ -40,7 +40,13 @@ Builder를 사용하지 않고 직접 카드를 설정할 때는 URL 쿼리 파�
 | `mode` | 타이핑 모드 · `time` 또는 `words` | `time` | `?mode=words` |
 | `length` | `time` 모드: `15`, `30`, `60`, `120`; `words` 모드: `10`, `25`, `50`, `100` | `60` | `?length=25` |
 
-예시: [Churious의 30초 기록 카드 보기 ↗](https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30)
+### 실제 임베드 예시
+
+![Churious의 Monkeytype 30초 기록 카드](https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30)
+
+```text
+https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30
+```
 
 ## 참고
 

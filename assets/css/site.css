@@ -93,6 +93,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .project-body { display: grid; grid-template-columns: 1fr 2.5fr; gap: 64px; border-top: 1px solid var(--line); padding-block: 44px 64px; }
 .project-body aside ul { list-style: none; padding: 0; color: var(--muted); font-size: 14px; }
 .project-body article { max-width: 720px; }
+.project-body article img { width: min(100%, 680px); margin: 20px 0 36px; border: 1px solid var(--line); border-radius: 6px; background: #292b2d; }
 .project-body article h2 { font-size: 28px; margin-bottom: 20px; }
 .project-body article p { line-height: 1.9; margin-bottom: 36px; word-break: keep-all; }
 .project-body article ul { padding-left: 22px; }
