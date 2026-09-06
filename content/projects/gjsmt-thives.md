@@ -10,7 +10,7 @@ link: "https://whanci-gmst-thives-web.vercel.app/"
 linkLabel: "홈페이지 방문"
 architecture: "/images/projects/gmst-architecture.svg"
 architectureSource: "/diagrams/gmst-architecture.drawio"
-architectureAlt: "공마고의 도둑들 Terraform 아키텍처. Arduino UNO와 ESP32-CAM이 API Gateway를 호출하고 Lambda가 S3 presigned URL을 발급한 뒤 이미지가 S3에 저장되며 Vercel 웹 화면에서 확인하는 구조입니다."
+architectureAlt: "공마고의 도둑들 아키텍처. Arduino UNO와 ESP32-CAM이 업로드 흐름을 시작하고 AWS Lambda가 S3 presigned URL을 발급한 뒤 이미지가 S3에 저장되며 Vercel 웹 화면에서 확인하는 구조입니다."
 school: "공주마이스터고등학교"
 award: "금상 (1위)"
 awardTitle: "프로젝트 발표대회"
@@ -34,7 +34,7 @@ awardScope: "1학년 66명"
 - 문 상태는 초음파 측정값을 여러 번 샘플링해 안정적으로 판정합니다.
 - ESP32-CAM과 UNO 사이에 READY, TRIGGER, COMPLETE 신호를 두어 촬영 상태를 동기화합니다.
 - 한 번의 문 열림에 최대 4회 촬영하고, 업로드 성공과 실패를 서로 다른 펄스로 구분합니다.
-- Terraform으로 VPC, S3, Lambda, API Gateway 인프라를 코드로 관리했습니다.
+- Terraform으로 S3, Lambda, API Gateway 인프라를 코드로 관리했습니다.
 
 ## 사용 기술
 - **하드웨어:** ESP32, 아두이노 UNO
