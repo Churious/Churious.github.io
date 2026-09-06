@@ -94,6 +94,24 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .footer-brand { color: var(--fg); font: 400 30px/1 Yellowtail, Caveat, cursive; letter-spacing: .01em; transform: rotate(-3deg); display: inline-block; }
 .site-footer small { font-size: 12px; letter-spacing: .07em; }
 .archive { padding-block: 64px 88px; }
+.lab-page { padding-block: 32px 96px; }
+.lab-heading { padding-block: 72px 84px; max-width: 900px; }
+.lab-heading h1 { margin-block: 22px; font-size: clamp(48px, 7vw, 104px); line-height: .96; }
+.lab-heading > p:last-child { color: var(--muted); font-size: 19px; }
+.lab-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--fg); }
+.lab-block { min-height: 280px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.lab-block:nth-child(odd) { padding-right: 56px; border-right: 1px solid var(--line); }
+.lab-block:nth-child(even) { padding-left: 56px; }
+.lab-block h2 { margin-block: 28px 22px; font-size: clamp(34px, 4vw, 58px); line-height: 1; }
+.lab-block > p:last-child { max-width: 520px; color: var(--muted); line-height: 1.9; }
+.lab-list { list-style: none; padding: 18px 0 0; margin: 0; }
+.lab-list li { display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.lab-list strong { font-size: 18px; }
+.lab-list span { color: var(--muted); }
+.lab-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.lab-tags span { padding: 9px 13px; border: 1px solid var(--fg); border-radius: 999px; font-size: 13px; }
+.lab-note { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+.lab-note .text-link { align-self: flex-start; }
 .page-heading { margin-bottom: 56px; }
 .page-heading h1 { font-size: clamp(48px, 7vw, 96px); margin-block: 24px; line-height: 1.04; }
 .page-heading > p:last-child { color: var(--muted); word-break: keep-all; }
@@ -160,6 +178,11 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
   .studio-note br { display: none; }
   .site-footer { align-items: start; flex-direction: column; gap: 8px; }
   .archive { padding-block: 40px 56px; }
+  .lab-page { padding-block: 24px 64px; }
+  .lab-heading { padding-block: 48px 56px; }
+  .lab-heading h1 { font-size: clamp(42px, 11vw, 68px); }
+  .lab-grid { grid-template-columns: minmax(0, 1fr); }
+  .lab-block, .lab-block:nth-child(odd), .lab-block:nth-child(even) { min-height: 0; padding: 28px 0; border-right: 0; }
   .project-heading { padding-block: 40px; }
   .project-heading h1 { font-size: clamp(36px, 9vw, 56px); }
   .architecture-links { justify-content: flex-start; }
