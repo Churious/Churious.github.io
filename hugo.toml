@@ -3,6 +3,9 @@ title = "Churious"
 languageCode = "ko-kr"
 theme = ["PaperMod"]
 
+[author]
+  name = "Churious"
+
 [params]
   defaultTheme = "auto"
   description = "Crafting with Curiosity"
