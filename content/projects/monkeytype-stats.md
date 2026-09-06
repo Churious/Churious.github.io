@@ -25,12 +25,12 @@ https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=
 
 ## 파라미터
 
-| Parameter | Description | Default | Example |
+| 파라미터 | 설명 | 기본값 | 사용 예시 |
 | --- | --- | --- | --- |
-| `username` | **필수** · Monkeytype 사용자명 | - | `?username=MiDeco` |
-| `theme` | 테마 이름 · [Monkeytype 전체 테마 지원](https://github.com/monkeytypegame/monkeytype/tree/master/frontend/static/themes) | `dark` | `?theme=serika_dark` |
+| `username` | **필수** · Monkeytype 사용자 이름 | - | `?username=MiDeco` |
+| `theme` | 테마 이름 · [Monkeytype의 모든 테마 지원](https://github.com/monkeytypegame/monkeytype/tree/master/frontend/static/themes) | `dark` | `?theme=serika_dark` |
 | `mode` | 타이핑 모드 · `time` 또는 `words` | `time` | `?mode=words` |
-| `length` | `time`: `15`, `30`, `60`, `120`; `words`: `10`, `25`, `50`, `100` | `60` | `?length=25` |
+| `length` | `time` 모드: `15`, `30`, `60`, `120`; `words` 모드: `10`, `25`, `50`, `100` | `60` | `?length=25` |
 
 ## 사용 방법
 
