@@ -82,6 +82,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .project-heading h1 { font-size: clamp(40px, 6vw, 80px); margin-block: 20px; line-height: 1.25; }
 .project-heading > p:last-child { font-size: 20px; color: var(--muted); }
 .project-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 28px; }
 .project-badges span, .project-badges strong { border: 1px solid var(--line); padding: 8px 12px; font-size: 13px; font-weight: 500; }
 .project-badges strong { border-color: var(--fg); }
 .award-record { margin-top: 44px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }

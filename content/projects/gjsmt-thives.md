@@ -3,6 +3,9 @@ title: "공마고의 도둑들"
 date: 2025-01-05
 description: "공주마이스터고등학교에서 제작해 1등을 수상한 공용 냉장고 음식 도난 방지 시스템"
 tags: ["IoT", "AWS", "JavaScript", "C"]
+year: "2025"
+posterTitle: "KEEP<br>IT<br><em>COOL.</em>"
+posterLabel: "GJSMT THIEVES"
 architecture: "/images/projects/gmst-architecture.svg"
 architectureSource: "/diagrams/gmst-architecture.drawio"
 architectureAlt: "공마고의 도둑들 Terraform 아키텍처. Arduino UNO와 ESP32-CAM이 API Gateway를 호출하고 Lambda가 S3 presigned URL을 발급한 뒤 이미지가 S3에 저장되며 Vercel 웹 화면에서 확인하는 구조입니다."
