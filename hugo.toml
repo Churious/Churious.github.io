@@ -3,12 +3,10 @@ title = "Churious"
 languageCode = "ko-kr"
 theme = ["PaperMod"]
 
-[author]
-  name = "Churious"
-
 [params]
   defaultTheme = "auto"
   description = "Crafting with Curiosity"
+  author = { name = "Churious" }
   
   # 블로그 글 설정
   ShowReadingTime = true
