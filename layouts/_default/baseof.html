@@ -28,7 +28,7 @@
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
   <header class="site-header container">
-    <a class="brand" href="/" aria-label="Churious 홈"><img src="/images/logo.svg" width="52" height="52" alt=""><span>Churious<span class="brand-period">.</span></span></a>
+    <a class="brand" href="/" aria-label="Churious 홈"><span>churious<span class="brand-period">.</span></span></a>
     <nav aria-label="주 메뉴"><a href="/projects/" {{ if eq .Section "projects" }}aria-current="page"{{ end }}>Projects</a><button class="theme-toggle" type="button" aria-label="다크 모드" aria-pressed="false"><span aria-hidden="true">◐</span></button></nav>
   </header>
   {{ block "main" . }}{{ end }}
