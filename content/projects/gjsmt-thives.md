@@ -6,7 +6,12 @@ tags: ["IoT", "AWS", "JavaScript", "C"]
 architecture: "/images/projects/gmst-thives.png"
 architectureAlt: "공마고의 도둑들 시스템 구성도. 장치와 사용자, AWS Cloud의 S3 및 VPC 내부 Private subnet의 EC2, 웹 클라이언트를 표시합니다."
 school: "공주마이스터고등학교"
-award: "교내 프로젝트 1등"
+award: "금상 (1위)"
+awardTitle: "프로젝트 발표대회"
+awardDate: "2026.01.05."
+awardIssuer: "공주마이스터고등학교장"
+awardTeam: "공동수상 · 4인"
+awardScope: "1학년 66명"
 ---
 
 ## 공용 냉장고에서 시작된 질문

@@ -84,6 +84,11 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .project-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .project-badges span, .project-badges strong { border: 1px solid var(--line); padding: 8px 12px; font-size: 13px; font-weight: 500; }
 .project-badges strong { border-color: var(--fg); }
+.award-record { margin-top: 44px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.award-record h2 { margin: 12px 0 22px; font-size: 26px; }
+.award-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.award-grid span { display: flex; flex-direction: column; gap: 5px; font-size: 14px; }
+.award-grid small { color: var(--muted); font-size: 11px; letter-spacing: .08em; }
 .project-body { display: grid; grid-template-columns: 1fr 2.5fr; gap: 64px; border-top: 1px solid var(--line); padding-block: 44px 64px; }
 .project-body aside ul { list-style: none; padding: 0; color: var(--muted); font-size: 14px; }
 .project-body article { max-width: 720px; }
@@ -124,6 +129,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
   .archive { padding-block: 40px 56px; }
   .project-heading { padding-block: 40px; }
   .project-heading h1 { font-size: clamp(36px, 9vw, 56px); }
+  .award-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
   .project-body { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .project-body aside ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 }
