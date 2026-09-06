@@ -13,11 +13,7 @@
 :root[data-theme="dark"] { color-scheme: dark; --bg: #111311; --fg: #f5f5f0; --muted: #aaa99f; --line: #3e413b; --panel: #20231e; --accent: #9aaeff; --accent-dark: #788eff; }
 * { box-sizing: border-box; }
 @media (pointer: fine) {
-  body, a, button { cursor: none; }
-  .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; border-radius: 50%; transform: translate(-100px, -100px); }
-  .cursor-dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: var(--accent); }
-  .cursor-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid var(--fg); opacity: .65; transition: width .25s ease, height .25s ease, margin .25s ease, background .25s ease, border-color .25s ease; }
-  .cursor-ring.is-hovering { width: 54px; height: 54px; margin: -27px 0 0 -27px; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); opacity: 1; }
+  body, a, button { cursor: url('/images/cursor.svg') 5 3, auto; }
 }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 body { margin: 0; background-color: var(--bg); background-image: radial-gradient(circle at 84% 8%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 24rem), linear-gradient(color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px); background-size: auto, 44px 44px, 44px 44px; color: var(--fg); font-size: 16px; line-height: 1.65; }

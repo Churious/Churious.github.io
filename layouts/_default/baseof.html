@@ -29,7 +29,6 @@
   </script>
 </head>
 <body>
-  <div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
   <header class="site-header container">
     <a class="brand" href="/" aria-label="Churious 홈"><img src="/images/header-logo.png" width="46" height="46" alt=""><span>Churious<span class="brand-period">.</span></span></a>
@@ -76,17 +75,6 @@
       carousel.addEventListener('mouseenter', () => clearInterval(timer));
       carousel.addEventListener('mouseleave', resetTimer);
       setSlide(0);
-    })();
-  </script>
-  <script>
-    (() => {
-      if (!matchMedia('(pointer: fine)').matches) return;
-      const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
-      let x = -100, y = -100, ringX = x, ringY = y;
-      window.addEventListener('pointermove', (event) => { x = event.clientX; y = event.clientY; dot.style.transform = `translate(${x}px, ${y}px)`; });
-      const follow = () => { ringX += (x - ringX) * .16; ringY += (y - ringY) * .16; ring.style.transform = `translate(${ringX}px, ${ringY}px)`; requestAnimationFrame(follow); };
-      follow();
-      document.querySelectorAll('a, button').forEach((element) => { element.addEventListener('mouseenter', () => ring.classList.add('is-hovering')); element.addEventListener('mouseleave', () => ring.classList.remove('is-hovering')); });
     })();
   </script>
 </body>
