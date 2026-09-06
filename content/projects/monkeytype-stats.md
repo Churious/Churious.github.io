@@ -13,6 +13,25 @@ repo: "https://github.com/Churious/monkeytype-stats"
 
 Monkeytype의 타자 기록을 GitHub 프로필 README에 바로 넣을 수 있는 이미지 API로 만들었습니다. 사용자가 지정한 테마, 모드, 기록 길이에 맞춰 결과 이미지를 동적으로 생성합니다.
 
+## API 예시
+
+아래처럼 URL을 Markdown 이미지 주소로 사용하면 실시간 타자 기록 카드를 프로필에 삽입할 수 있습니다.
+
+![Churious MonkeyType stats 예시](https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30)
+
+```text
+https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30
+```
+
+## 파라미터
+
+| Parameter | Description | Default | Example |
+| --- | --- | --- | --- |
+| `username` | **필수** · Monkeytype 사용자명 | - | `?username=MiDeco` |
+| `theme` | 테마 이름 · [Monkeytype 전체 테마 지원](https://github.com/monkeytypegame/monkeytype/tree/master/frontend/static/themes) | `dark` | `?theme=serika_dark` |
+| `mode` | 타이핑 모드 · `time` 또는 `words` | `time` | `?mode=words` |
+| `length` | `time`: `15`, `30`, `60`, `120`; `words`: `10`, `25`, `50`, `100` | `60` | `?length=25` |
+
 ## 사용 방법
 
 쿼리 파라미터로 Monkeytype 사용자명과 원하는 설정을 전달하면 됩니다. `theme`, `mode`, `length`를 조합해 각자의 프로필에 맞는 카드를 만들 수 있습니다.
