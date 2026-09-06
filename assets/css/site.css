@@ -99,8 +99,8 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .error-page h1 { font-size: clamp(32px, 5vw, 64px); margin-block: 24px; }
 .architecture { border-top: 1px solid var(--line); padding-block: 40px 64px; }
 .architecture-figure { margin: 0; padding: clamp(16px, 4vw, 48px); background: #fff; color: #303030; border: 1px solid var(--line); }
-.architecture-figure > a { display: block; width: fit-content; max-width: 100%; margin-inline: auto; }
-.architecture-figure img { width: 482px; height: auto; }
+.architecture-figure > a { display: block; width: 100%; max-width: 1005px; margin-inline: auto; }
+.architecture-figure img { width: 100%; height: auto; }
 .architecture-figure figcaption { margin-top: 24px; text-align: center; font-size: 14px; color: #626262; }
 .architecture-links { display: flex; flex-wrap: wrap; gap: 18px; justify-content: flex-end; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
