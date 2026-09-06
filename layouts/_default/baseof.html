@@ -3,19 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}Churious — Independent software studio{{ else }}{{ .Title }} — Churious{{ end }}</title>
-  <meta name="description" content="Churious — 작은 불편함을 오래 쓰고 싶은 도구로 만드는 1인 소프트웨어 스튜디오">
+  {{ $title := printf "%s — Churious" .Title }}{{ if .IsHome }}{{ $title = "Churious — 호기심으로 만드는 소프트웨어" }}{{ end }}
+  {{ $description := .Description | default site.Params.description }}
+  <title>{{ $title }}</title>
+  <meta name="description" content="{{ $description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
   <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/site.css">
-  <link rel="stylesheet" href="/css/pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <script>
+    (() => {
+      let saved; try { saved = localStorage.getItem('churious-theme'); } catch {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    })();
+  </script>
 </head>
 <body>
-  <header class="site-header"><a class="brand" href="/"><span class="brand-mark"><img src="/images/logo.svg" alt=""></span><span>Churious</span></a><nav><a href="/projects/">Projects</a><button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button></nav></header>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header container">
+    <a class="brand" href="/" aria-label="Churious 홈"><img src="/images/logo.svg" width="52" height="52" alt=""><span>Churious<span class="brand-period">.</span></span></a>
+    <nav aria-label="주 메뉴"><a href="/projects/" {{ if eq .Section "projects" }}aria-current="page"{{ end }}>Projects</a><button class="theme-toggle" type="button" aria-label="다크 모드" aria-pressed="false"><span aria-hidden="true">◐</span></button></nav>
+  </header>
   {{ block "main" . }}{{ end }}
-  <footer class="site-footer"><span>© {{ now.Year }} CHURIOUS</span><span>Made with curiosity.</span></footer>
-  <script>const b=document.body,t=document.querySelector('.theme-toggle');const saved=localStorage.getItem('churious-theme');if(saved==='dark')b.classList.add('dark');t.addEventListener('click',()=>{b.classList.toggle('dark');localStorage.setItem('churious-theme',b.classList.contains('dark')?'dark':'light')});</script>
+  <footer class="site-footer container"><a href="/" class="footer-brand">Churious.</a><span>호기심으로 만들고, 함께 나눕니다.</span><small>© {{ now.Year }} CHURIOUS</small></footer>
+  <script>
+    (() => {
+      const root = document.documentElement, button = document.querySelector('.theme-toggle');
+      const sync = () => button.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+      sync();
+      button.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('churious-theme', root.dataset.theme); } catch {}
+        sync();
+      });
+    })();
+  </script>
 </body>
 </html>

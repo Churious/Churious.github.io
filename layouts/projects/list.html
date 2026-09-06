@@ -1,1 +1,6 @@
-{{ define "main" }}<main class="archive"><div class="archive-top"><p class="eyebrow">CHURIOUS / ARCHIVE</p><h1>Things we<br><em>make.</em></h1></div><div class="archive-list">{{ range .Pages.ByDate.Reverse }}<a class="archive-item" href="{{ .RelPermalink }}"><span>{{ printf "%03d" (add 1 .Weight) }}</span><div><small>{{ delimit .Params.tags " · " }}</small><h2>{{ .Title }}</h2><p>{{ .Description }}</p></div><b>↗</b></a>{{ end }}</div></main>{{ end }}
+{{ define "main" }}
+<main id="main" class="container archive">
+  <div class="page-heading"><p class="eyebrow">CHURIOUS / PROJECTS</p><h1>Small ideas.<br><em>Real things.</em></h1><p>작은 불편함을 해결하기 위해 만든 도구와 실험들.</p></div>
+  {{ range .RegularPages.ByDate.Reverse }}{{ partial "project-card.html" . }}{{ end }}
+</main>
+{{ end }}
