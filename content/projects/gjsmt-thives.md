@@ -38,6 +38,6 @@ awardScope: "1학년 66명"
 
 ## 사용 기술
 - **하드웨어:** ESP32, 아두이노 UNO
-- **클라우드:** AWS (EC2, S3)
+- **클라우드:** AWS (S3, Lambda, API Gateway)
 - **웹:** Vercel (JavaScript)
 - **언어:** C
