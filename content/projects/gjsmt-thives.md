@@ -3,7 +3,7 @@ title: "공마고의 도둑들"
 date: 2025-01-05
 description: "공주마이스터고등학교에서 제작해 1등을 수상한 공용 냉장고 음식 도난 방지 시스템"
 tags: ["IoT", "AWS", "JavaScript", "C"]
-architecture: "/images/projects/gmst-thives.png"
+architecture: "/images/projects/gmst-architecture.svg"
 architectureAlt: "공마고의 도둑들 시스템 구성도. 장치와 사용자, AWS Cloud의 S3 및 VPC 내부 Private subnet의 EC2, 웹 클라이언트를 표시합니다."
 school: "공주마이스터고등학교"
 award: "금상 (1위)"
