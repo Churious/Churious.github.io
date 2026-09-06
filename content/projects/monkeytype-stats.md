@@ -1,7 +1,7 @@
 ---
 title: "MonkeyType Stats Viewer"
-description: "Monkeytype 타자 기록을 GitHub 프로필용 이미지로 동적으로 보여주는 서비스"
-tags: ["Go", "Vercel", "GitHub", "API"]
+description: "GitHub 프로필에 Monkeytype 타자 기록을 동적으로 보여주는 카드 생성기"
+tags: ["Go", "Vercel", "GitHub", "Monkeytype"]
 year: "2025"
 posterTitle: "TYPE<br>YOUR<br><em>BEST.</em>"
 posterLabel: "MONKEYTYPE STATS"
@@ -9,21 +9,29 @@ link: "https://monkeytype-stats.vercel.app"
 repo: "https://github.com/Churious/monkeytype-stats"
 ---
 
-## 프로필에 움직이는 기록을
+## GitHub 프로필을 위한 타자 기록 카드
 
-Monkeytype의 타자 기록을 GitHub 프로필 README에 바로 넣을 수 있는 이미지 API로 만들었습니다. 사용자가 지정한 테마, 모드, 기록 길이에 맞춰 결과 이미지를 동적으로 생성합니다.
+Monkeytype Stats Viewer는 Monkeytype 통계를 GitHub 프로필에 동적으로 표시하는 프로젝트입니다. Vercel로 배포한 뒤 사이트에 접속하면 **Monkeytype Stats Builder**에서 사용자명, 테마, 모드, 테스트 길이를 설정하고 나만의 카드를 만들 수 있습니다.
 
-## API 예시
+## Builder 사용하기
 
-아래처럼 URL을 Markdown 이미지 주소로 사용하면 실시간 타자 기록 카드를 프로필에 삽입할 수 있습니다.
+[Monkeytype Stats Builder 열기 ↗](https://monkeytype-stats.vercel.app)
 
-![Churious MonkeyType stats 예시](https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30)
+Builder에서 설정을 바꾸면 미리보기 카드가 즉시 갱신되고, 완성된 Markdown을 클릭해서 복사할 수 있습니다. 복사한 내용을 GitHub 프로필 README에 붙여 넣으면 됩니다.
 
-```text
-https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30
-```
+## 배포
 
-## 파라미터
+직접 인스턴스를 배포하고 싶다면 저장소를 원하는 플랫폼으로 가져오면 됩니다. Go와의 호환성이 가장 좋은 배포 환경으로 Vercel을 권장합니다.
+
+| 플랫폼 | 배포 |
+| --- | --- |
+| **Vercel** | [Vercel로 배포하기](https://vercel.com/new/clone?repository-url=https://github.com/Churious/monkeytype-stats) · 권장 |
+| **Netlify** | [Netlify로 배포하기](https://app.netlify.com/start/deploy?repository=https://github.com/Churious/monkeytype-stats) |
+| **Railway** | [Railway로 배포하기](https://railway.app/new/template?template=https://github.com/Churious/monkeytype-stats) · 체험용 |
+
+## 설정
+
+Builder를 사용하지 않고 직접 카드를 설정할 때는 URL 쿼리 파라미터를 사용할 수 있습니다.
 
 | 파라미터 | 설명 | 기본값 | 사용 예시 |
 | --- | --- | --- | --- |
@@ -32,15 +40,14 @@ https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=
 | `mode` | 타이핑 모드 · `time` 또는 `words` | `time` | `?mode=words` |
 | `length` | `time` 모드: `15`, `30`, `60`, `120`; `words` 모드: `10`, `25`, `50`, `100` | `60` | `?length=25` |
 
-## 사용 방법
+예시: [Churious의 30초 기록 카드 보기 ↗](https://monkeytype-stats.vercel.app/api?user=Churious&theme=blueberry_dark&mode=time&length=30)
 
-쿼리 파라미터로 Monkeytype 사용자명과 원하는 설정을 전달하면 됩니다. `theme`, `mode`, `length`를 조합해 각자의 프로필에 맞는 카드를 만들 수 있습니다.
+## 참고
 
-GitHub의 이미지 캐시 특성상 기록이 갱신된 뒤 화면에 반영되기까지 약간의 시간이 걸릴 수 있습니다.
+- Monkeytype에서 테마 목록을 자동으로 불러옵니다.
+- GitHub는 성능을 위해 이미지를 캐시하므로 기록이 즉시 갱신되지 않을 수 있습니다. 보통 10~15분 안에 반영됩니다.
+- 테마 이름의 공백은 밑줄로 바꿔야 합니다. 예: `modern dolch` → `modern_dolch`
 
-## 구현 포인트
+## 크레딧
 
-- Go 기반 API로 Monkeytype 데이터를 조회하고 프로필 이미지를 생성합니다.
-- Vercel에 배포해 별도 서버 관리 없이 API를 제공합니다.
-- Monkeytype의 다양한 테마와 time / words 모드를 지원합니다.
-- GitHub README의 Markdown 이미지 링크만으로 사용할 수 있도록 구성했습니다.
+카드에 사용한 [Monocraft 폰트](https://github.com/IdreesInc/Monocraft)는 SIL OFL 1.1 라이선스로 제공됩니다.
