@@ -45,5 +45,27 @@
       });
     })();
   </script>
+  <script>
+    (() => {
+      const carousel = document.querySelector('[data-work-carousel]');
+      if (!carousel) return;
+      const slides = [...carousel.querySelectorAll('[data-work-slide]')];
+      const dots = [...carousel.querySelectorAll('[data-work-dot]')];
+      const setSlide = (next) => {
+        const index = (next + slides.length) % slides.length;
+        slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === index); slide.setAttribute('aria-hidden', i === index ? 'false' : 'true'); });
+        dots.forEach((dot, i) => { dot.classList.toggle('is-active', i === index); dot.setAttribute('aria-selected', i === index ? 'true' : 'false'); });
+        carousel.dataset.current = index;
+      };
+      let timer = setInterval(() => setSlide(Number(carousel.dataset.current || 0) + 1), 6000);
+      const resetTimer = () => { clearInterval(timer); timer = setInterval(() => setSlide(Number(carousel.dataset.current || 0) + 1), 6000); };
+      carousel.querySelector('[data-work-prev]')?.addEventListener('click', () => { setSlide(Number(carousel.dataset.current || 0) - 1); resetTimer(); });
+      carousel.querySelector('[data-work-next]')?.addEventListener('click', () => { setSlide(Number(carousel.dataset.current || 0) + 1); resetTimer(); });
+      dots.forEach((dot) => dot.addEventListener('click', () => { setSlide(Number(dot.dataset.workDot)); resetTimer(); }));
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', resetTimer);
+      setSlide(0);
+    })();
+  </script>
 </body>
 </html>
