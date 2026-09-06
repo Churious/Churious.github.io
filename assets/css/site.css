@@ -25,7 +25,7 @@ em { font-family: Georgia, serif; font-weight: 400; }
 .skip-link { position: absolute; z-index: 10; top: 8px; left: 20px; background: var(--bg); padding: 12px; transform: translateY(-150%); }
 .skip-link:focus { transform: translateY(0); }
 .site-header { min-height: 96px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); gap: 20px; }
-.brand { display: flex; gap: 8px; align-items: center; font-size: 22px; font-family: "Space Grotesk", Inter, sans-serif; font-weight: 800; letter-spacing: -.09em; text-transform: uppercase; }
+.brand { display: flex; gap: 8px; align-items: center; font-size: 34px; font-family: Yellowtail, Caveat, cursive; font-weight: 400; letter-spacing: .01em; text-transform: none; transform: rotate(-3deg); }
 .brand img { object-fit: contain; mix-blend-mode: multiply; transform: rotate(3deg); }
 .brand img { object-fit: contain; mix-blend-mode: multiply; }
 [data-theme="dark"] .brand img { filter: invert(1); mix-blend-mode: screen; }
@@ -90,7 +90,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .studio-note p:not(.eyebrow) { margin-top: 24px; color: var(--muted); word-break: keep-all; }
 .note-symbol { font-size: 64px; line-height: 1; }
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px; padding-block: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-.footer-brand { color: var(--fg); font: 800 22px/1 "Space Grotesk", Inter, sans-serif; letter-spacing: -.09em; text-transform: uppercase; }
+.footer-brand { color: var(--fg); font: 400 30px/1 Yellowtail, Caveat, cursive; letter-spacing: .01em; transform: rotate(-3deg); display: inline-block; }
 .site-footer small { font-size: 12px; letter-spacing: .07em; }
 .archive { padding-block: 64px 88px; }
 .page-heading { margin-bottom: 56px; }
