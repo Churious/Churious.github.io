@@ -13,7 +13,7 @@
 :root[data-theme="dark"] { color-scheme: dark; --bg: #111311; --fg: #f5f5f0; --muted: #aaa99f; --line: #3e413b; --panel: #20231e; --accent: #9aaeff; --accent-dark: #788eff; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-body { margin: 0; background: var(--bg); color: var(--fg); font-size: 16px; line-height: 1.65; }
+body { margin: 0; background-color: var(--bg); background-image: radial-gradient(circle at 84% 8%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 24rem), linear-gradient(color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px); background-size: auto, 44px 44px, 44px 44px; color: var(--fg); font-size: 16px; line-height: 1.65; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 img { display: block; max-width: 100%; }
@@ -36,6 +36,8 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .theme-toggle:hover { background: var(--panel); }
 .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .12em; color: var(--muted); }
 .hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); column-gap: 24px; padding-top: 34px; }
+.hero-copy { position: relative; }
+.hero-copy::before { content: '✦'; position: absolute; right: 7%; top: 20%; color: var(--accent); font: 42px/1 Georgia, serif; transform: rotate(14deg); }
 .hero-label { grid-column: 1/-1; display: flex; align-items: center; gap: 9px; }
 .status-dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
 .hero-copy { padding-block: 76px 80px; z-index: 1; }
