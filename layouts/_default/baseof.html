@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   <script>
@@ -28,7 +29,7 @@
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
   <header class="site-header container">
-    <a class="brand" href="/" aria-label="Churious 홈"><span>churious<span class="brand-period">.</span></span></a>
+    <a class="brand" href="/" aria-label="Churious 홈"><img src="/images/logo.svg" width="46" height="46" alt=""><span>Churious<span class="brand-period">.</span></span></a>
     <nav aria-label="주 메뉴"><a href="/projects/" {{ if eq .Section "projects" }}aria-current="page"{{ end }}>Projects</a><button class="theme-toggle" type="button" aria-label="다크 모드" aria-pressed="false"><span aria-hidden="true">◐</span></button></nav>
   </header>
   {{ block "main" . }}{{ end }}
